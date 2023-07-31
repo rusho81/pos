@@ -30,6 +30,7 @@ Route::get('/verifyOtp',[UserController::class, 'VerifyOtpPage']);
 Route::get('/resetPassword',[UserController::class, 'ResetPasswordPage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/dashboard',[DashboardController::class, 'DashboardPage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/userProfile',[UserController::class, 'ProfilePage'])->middleware([TokenVarificationMiddleware::class]);
+
 Route::get('/categoryPage',[CategoryController::class, 'CategoryPage'])->middleware([TokenVarificationMiddleware::class]);
 
 
@@ -38,3 +39,4 @@ Route::post('/create-category',[CategoryController::class, 'CategoryCreate'])->m
 Route::post('/delete-category',[CategoryController::class, 'CategoryDelete'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/list-category',[CategoryController::class, 'CategoryList'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/update-category',[CategoryController::class, 'CategoryUpdate'])->middleware([TokenVarificationMiddleware::class]);
+Route::post('/category-by-id',[CategoryController::class, 'CategoryById'])->middleware([TokenVarificationMiddleware::class]);
