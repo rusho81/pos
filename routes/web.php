@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVarificationMiddleware;
-use Illuminate\Support\Facades\Route;
 
 
 //API Route
@@ -40,3 +41,11 @@ Route::post('/delete-category',[CategoryController::class, 'CategoryDelete'])->m
 Route::get('/list-category',[CategoryController::class, 'CategoryList'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/update-category',[CategoryController::class, 'CategoryUpdate'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/category-by-id',[CategoryController::class, 'CategoryById'])->middleware([TokenVarificationMiddleware::class]);
+
+
+//Product API
+Route::post("/create-product",[ProductController::class,'CreateProduct'])->middleware([TokenVarificationMiddleware::class]);
+Route::post("/delete-product",[ProductController::class,'DeleteProduct'])->middleware([TokenVarificationMiddleware::class]);
+Route::post("/update-product",[ProductController::class,'UpdateProduct'])->middleware([TokenVarificationMiddleware::class]);
+Route::get("/list-product",[ProductController::class,'ProductList'])->middleware([TokenVarificationMiddleware::class]);
+Route::post("/product-by-id",[ProductController::class,'ProductByID'])->middleware([TokenVarificationMiddleware::class]);
