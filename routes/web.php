@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\TokenVarificationMiddleware;
 
@@ -51,3 +52,10 @@ Route::post("/delete-product",[ProductController::class,'DeleteProduct'])->middl
 Route::post("/update-product",[ProductController::class,'UpdateProduct'])->middleware([TokenVarificationMiddleware::class]);
 Route::get("/list-product",[ProductController::class,'ProductList'])->middleware([TokenVarificationMiddleware::class]);
 Route::post("/product-by-id",[ProductController::class,'ProductByID'])->middleware([TokenVarificationMiddleware::class]);
+
+
+//Customer API
+Route::post('/create-customer',[CustomerController::class, 'CreateCustomer'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/customer-list',[CustomerController::class, 'CustomerList'])->middleware([TokenVarificationMiddleware::class]);
+Route::post('/customer-delete',[CustomerController::class, 'CustomerDelete'])->middleware([TokenVarificationMiddleware::class]);
+Route::post('/customer-udpate',[CustomerController::class, 'CustomerUpdate'])->middleware([TokenVarificationMiddleware::class]);
