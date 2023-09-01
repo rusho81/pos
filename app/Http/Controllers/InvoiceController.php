@@ -95,6 +95,5 @@ class InvoiceController extends Controller
             DB::rollBack();
             return 0;
         }
-
     }
 }
