@@ -6,6 +6,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Middleware\TokenVarificationMiddleware;
 
 
@@ -33,6 +34,8 @@ Route::get('/resetPassword',[UserController::class, 'ResetPasswordPage'])->middl
 Route::get('/dashboard',[DashboardController::class, 'DashboardPage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/userProfile',[UserController::class, 'ProfilePage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/ProductPage',[ProductController::class, 'ProductPage'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/invoicePage',[InvoiceController::class, 'InvoicePage'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/salePage',[InvoiceController::class, 'SalePage'])->middleware([TokenVarificationMiddleware::class]);
 
 
 Route::get('/categoryPage',[CategoryController::class, 'CategoryPage'])->middleware([TokenVarificationMiddleware::class]);
@@ -59,3 +62,9 @@ Route::post('/create-customer',[CustomerController::class, 'CreateCustomer'])->m
 Route::get('/customer-list',[CustomerController::class, 'CustomerList'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/customer-delete',[CustomerController::class, 'CustomerDelete'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/customer-udpate',[CustomerController::class, 'CustomerUpdate'])->middleware([TokenVarificationMiddleware::class]);
+
+//Invoice 
+Route::post('/invoice-create',[InvoiceController::class, 'InvoiceCreate'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/invoice-select',[InvoiceController::class, 'InvoiceSelect'])->middleware([TokenVarificationMiddleware::class]);
+Route::post('/invoice-details',[InvoiceController::class, 'InvoiceDetails'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/invoice-delete',[InvoiceController::class, 'InvoiceDelete'])->middleware([TokenVarificationMiddleware::class]);
