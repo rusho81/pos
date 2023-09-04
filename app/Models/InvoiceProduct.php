@@ -2,11 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class InvoiceProduct extends Model
 {
     use HasFactory;
-    protected $fillabel = ['invoice_id','product_id', 'qty', 'sale_price','user_id'];
+    protected $fillable = ['invoice_id','product_id', 'qty', 'sale_price','user_id'];
+
+    function product():BelongsTo{
+        return $this->belongsTo(Product::class);
+    }
 }
