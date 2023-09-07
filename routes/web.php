@@ -59,7 +59,7 @@ Route::post("/product-by-id",[ProductController::class,'ProductByID'])->middlewa
 
 //Customer API
 Route::post('/create-customer',[CustomerController::class, 'CreateCustomer'])->middleware([TokenVarificationMiddleware::class]);
-Route::get('/customer-list',[CustomerController::class, 'CustomerList'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/list-customer',[CustomerController::class, 'CustomerList'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/customer-delete',[CustomerController::class, 'CustomerDelete'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/customer-udpate',[CustomerController::class, 'CustomerUpdate'])->middleware([TokenVarificationMiddleware::class]);
 
@@ -67,4 +67,4 @@ Route::post('/customer-udpate',[CustomerController::class, 'CustomerUpdate'])->m
 Route::post('/invoice-create',[InvoiceController::class, 'InvoiceCreate'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/invoice-select',[InvoiceController::class, 'InvoiceSelect'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/invoice-details',[InvoiceController::class, 'InvoiceDetails'])->middleware([TokenVarificationMiddleware::class]);
-Route::get('/invoice-delete',[InvoiceController::class, 'InvoiceDelete'])->middleware([TokenVarificationMiddleware::class]);
+Route::post('/invoice-delete',[InvoiceController::class, 'InvoiceDelete'])->middleware([TokenVarificationMiddleware::class]);

@@ -81,15 +81,18 @@ class InvoiceController extends Controller
 
     function InvoiceDetails(Request $request) {
         $user_id = $request->header('id');
-        $customer_details = Customer::where('user_id', $user_id)->where('id', $request->input('cus_id'))->get();
-        $invoiceTotal = Invoice::where('user_id', $user_id)->where('id', $request->input('inv_id'))->get();
-        $invoiceProduct = InvoiceProduct::where('user_id', $user_id)->where('id', $request->input('inv_id'))->get();
+        $customerDetails = Customer::where('user_id', $user_id)->where('id', $request->input('cus_id'))->first();
+        $invoiceTotal = Invoice::where('user_id', $user_id)->where('id', $request->input('inv_id'))->first();
+        $invoiceProduct = InvoiceProduct::where('user_id', $user_id)->
+        where('invoice_id', $request->input('inv_id'))->with('product')->get();
 
         return array(
-            'customer'=>$customer_details,
+            'customer'=>$customerDetails,
             'invoice'=>$invoiceTotal,
             'product'=>$invoiceProduct,
         );
+
+        
     }
 
     function InvoiceDelete(Request $request) {
