@@ -32,6 +32,7 @@ Route::get('/sendOtp',[UserController::class, 'SendOtpPage']);
 Route::get('/verifyOtp',[UserController::class, 'VerifyOtpPage']);
 Route::get('/resetPassword',[UserController::class, 'ResetPasswordPage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/dashboard',[DashboardController::class, 'DashboardPage'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/summary',[DashboardController::class, 'Summary'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/userProfile',[UserController::class, 'ProfilePage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/ProductPage',[ProductController::class, 'ProductPage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/invoicePage',[InvoiceController::class, 'InvoicePage'])->middleware([TokenVarificationMiddleware::class]);
