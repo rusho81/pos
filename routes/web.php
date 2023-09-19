@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
+use App\Http\Controllers\ReportController;
 use App\Http\Middleware\TokenVarificationMiddleware;
 
 
@@ -32,11 +33,12 @@ Route::get('/sendOtp',[UserController::class, 'SendOtpPage']);
 Route::get('/verifyOtp',[UserController::class, 'VerifyOtpPage']);
 Route::get('/resetPassword',[UserController::class, 'ResetPasswordPage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/dashboard',[DashboardController::class, 'DashboardPage'])->middleware([TokenVarificationMiddleware::class]);
-Route::get('/summary',[DashboardController::class, 'Summary'])->middleware([TokenVarificationMiddleware::class]);
+
 Route::get('/userProfile',[UserController::class, 'ProfilePage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/ProductPage',[ProductController::class, 'ProductPage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/invoicePage',[InvoiceController::class, 'InvoicePage'])->middleware([TokenVarificationMiddleware::class]);
 Route::get('/salePage',[InvoiceController::class, 'SalePage'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/reportPage',[ReportController::class, 'ReportPage'])->middleware([TokenVarificationMiddleware::class]);
 
 
 Route::get('/categoryPage',[CategoryController::class, 'CategoryPage'])->middleware([TokenVarificationMiddleware::class]);
@@ -69,3 +71,7 @@ Route::post('/invoice-create',[InvoiceController::class, 'InvoiceCreate'])->midd
 Route::get('/invoice-select',[InvoiceController::class, 'InvoiceSelect'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/invoice-details',[InvoiceController::class, 'InvoiceDetails'])->middleware([TokenVarificationMiddleware::class]);
 Route::post('/invoice-delete',[InvoiceController::class, 'InvoiceDelete'])->middleware([TokenVarificationMiddleware::class]);
+
+
+Route::get('/summary',[DashboardController::class, 'Summary'])->middleware([TokenVarificationMiddleware::class]);
+Route::get('/sales-report/{FormDate}/{ToDate}',[ReportController::class, 'SalesReport'])->middleware([TokenVarificationMiddleware::class]);
